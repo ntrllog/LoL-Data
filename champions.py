@@ -9,5 +9,5 @@ ids = list(map(lambda x: id_dict['data'][x]['key'], id_dict['data']))
 idMap = dict(zip(ids, id_dict['data'].keys()))
 
 jsFile = open('champions.js', 'w')
-jsFile.write('const champions = ' + str(idMap) + ';\n\nexport default champions;')
+jsFile.write('const champions = ' + str(idMap) + ';\n')
 jsFile.close()
