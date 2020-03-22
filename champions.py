@@ -4,7 +4,12 @@ res = requests.get('http://ddragon.leagueoflegends.com/cdn/10.6.1/data/en_US/cha
 
 id_dict = json.loads(res.text)
 
-ids = list(map(lambda x: id_dict['data'][x]['key'], id_dict['data']))
+###
+# In champion.json, the "data" key maps to a dictionary where each key* is the champion name and the value is a dictionary containing information about the champion. 
+###
+
+# x is the key* (champion name)
+ids = list(map(lambda x: int(id_dict['data'][x]['key']), id_dict['data']))
 
 idMap = dict(zip(ids, id_dict['data'].keys()))
 
