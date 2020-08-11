@@ -16,8 +16,15 @@ spells = json.loads(res.text)
 spell_ids = list(map(lambda x: int(spells['data'][x]['key']), spells['data']))
 spell_image_urls = list(map(lambda x: spells['data'][x]['image']['full'], spells['data']))
 
+res = requests.get(f'https://ddragon.leagueoflegends.com/cdn/{PATCH_VERSION}/data/en_US/item.json')
+
+items = json.loads(res.text)
+
+item_image_urls = list(map(lambda x: items['data'][x]['image']['full'], items['data']))
+
 jsFile = open('gameData.js', 'w')
 jsFile.write('const idToChampNameMap = ' + str(dict(zip(champion_ids, names))) + ';\n')
 jsFile.write('\nconst idToChampKeyMap = ' + str(dict(zip(champion_ids, champions['data'].keys()))) + ';\n')
 jsFile.write('\nconst idToSpellImageUrlMap = ' + str(dict(zip(spell_ids, spell_image_urls))) + ';\n')
+jsFile.write('\nconst idToItemImageUrlMap = ' + str(dict(zip(items['data'].keys(), item_image_urls))) + ';\n')
 jsFile.close()
