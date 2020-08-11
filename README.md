@@ -2,7 +2,7 @@
 
 Objects/Dictionaries that make it easier to work with the Riot Games API
 
-Patch: 10.16.1
+Patch: `10.16.1`
 
 Latest champion: `Yone`
 
