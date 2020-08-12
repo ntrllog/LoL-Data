@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, os
 
 PATCH_VERSION = '10.16.1'
 
@@ -30,9 +30,14 @@ for rune_path in runes:
         keystone_ids.append(keystone['id'])
         keystone_names.append(keystone['key'])
 
+items = {}
+for file in os.listdir('item'):
+    items[file.split('.')[0]] = f'require(../images/Items/{file})'
+
 with open('gameData.js', 'w') as jsFile:
     jsFile.write('const idToChampNameMap = ' + str(dict(zip(champion_ids, names))) + ';\n')
     jsFile.write('\nconst idToChampKeyMap = ' + str(dict(zip(champion_ids, champions['data'].keys()))) + ';\n')
     jsFile.write('\nconst idToSpellImageUrlMap = ' + str(dict(zip(spell_ids, spell_image_urls))) + ';\n')
     jsFile.write('\nconst idToRunePathNameMap = ' + str(dict(zip(rune_path_ids, rune_path_names))) + ';\n')
     jsFile.write('\nconst idToKeystoneNameMap = ' + str(dict(zip(keystone_ids, keystone_names))) + ';\n')
+    jsFile.write('\nconst idToItemUrlMap = ' + str(items) + ';\n')
