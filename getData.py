@@ -32,7 +32,7 @@ for rune_path in runes:
 
 items = {}
 for file in os.listdir('item'):
-    items[int(file.split('.')[0])] = f'require(../images/Items/{file})'
+    items[int(file.split('.')[0])] = f"require('../images/Items/{file}')"
 
 with open('gameData.js', 'w') as jsFile:
     jsFile.write('const idToChampNameMap = ' + str(dict(zip(champion_ids, names))) + ';\n')
