@@ -1,6 +1,6 @@
 import requests, json, os
 
-PATCH_VERSION = '10.25.1'
+PATCH_VERSION = '11.2.1'
 
 res = requests.get(f'https://ddragon.leagueoflegends.com/cdn/{PATCH_VERSION}/data/en_US/champion.json')
 
