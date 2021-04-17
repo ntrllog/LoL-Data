@@ -1,6 +1,6 @@
 import requests, json, os
 
-PATCH_VERSION = '11.2.1'
+PATCH_VERSION = '11.8.1'
 
 res = requests.get(f'https://ddragon.leagueoflegends.com/cdn/{PATCH_VERSION}/data/en_US/champion.json')
 
@@ -33,8 +33,6 @@ for rune_path in runes:
 items = {}
 for file in os.listdir('item'):
     items[int(file.split('.')[0])] = f"require('../images/Items/{file}')"
-
-print(len(items))
 
 with open('gameData.js', 'w') as jsFile:
     jsFile.write('const idToChampNameMap = ' + str(dict(zip(champion_ids, names))) + ';\n')
